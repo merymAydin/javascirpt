@@ -1,0 +1,1 @@
+bu bir deneme metni.fetch ile bu dosyadan okuma yapcaz.

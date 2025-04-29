@@ -1,0 +1,17 @@
+//constta referans değişkeni oluşturulduğunda, referans değişkeni değiştirilemez, ancak referans değişkeni içindeki veriler değiştirilebilir.
+const PI = 3.141593;
+console.log(" PI: " + PI);
+const fullname = "akın cengiz";
+console.log("fullname: " + fullname);
+PI=3;
+
+const cities = ["Ankara", "İstanbul", "İzmir"];
+console.log("cities: " + cities);
+cities.push("Bursa");
+console.log("cities: " + cities);
+cities[0]="Adana";
+console.log("cities: " + cities);
+const cities2 = ["antalya", "rize","Bursa","mardin"];
+cities= cities2;
+console.log(cities);
+

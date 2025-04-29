@@ -1,0 +1,7 @@
+.container {
+    width: 80%; /* Genişliği belirler */
+    margin: 0 auto; /* Ortalar */
+    padding: 20px; /* İçerik ile kenarlar arasına boşluk ekler */
+    background-color: #f0f0f0; /* Arkaplan rengi */
+    border: 1px solid #ccc; /* Kenar çerçevesi */
+}

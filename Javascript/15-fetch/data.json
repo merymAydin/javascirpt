@@ -1,0 +1,8 @@
+{
+    "user" : {
+        "firstname" :"akın",
+        "lastname" :"cengiz",
+        "email" : "asd@gmail.com"
+    },
+    "programLanguages" : ["HTML","CSS","JAVA","REACT","C#"]
+}

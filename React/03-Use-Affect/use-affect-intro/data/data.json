@@ -1,0 +1,18 @@
+{
+    "myinfo" : {
+    "firstname" : "akın",
+    "lastname" : "cengiz",
+    "email" : "a@gmail.com"
+    },
+    "products" : [
+        {"id" : 1, "name" : "pc","price" : 15000},
+        {"id" : 2, "name" : "telefon","price" : 12000},
+        {"id" : 3, "name" : "tv","price" : 10000},
+        {"id" : 4, "name" : "klavye","price" : 500}
+    ],
+    "address" : {
+        "city" : "istanbul",
+        "town" : "eyüp",
+        "district" : "kemerburgaz"
+    }
+}
