@@ -1,11 +1,11 @@
 import React from 'react'
 import CartList from './CartList'
 
-function Content() {
+function Content({productInfo, setProductInfo}) {
   return (
     <>
      <main className="main">
-        <CartList/>
+        <CartList productInfo={productInfo} setProductInfo={setProductInfo}/>
      </main>
     </>
   )
