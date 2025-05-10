@@ -3,7 +3,7 @@ const router = express.Router();
 
 //rotaları oluşturuyoruz (Route)
 const categoryRoute = require("./categories");
-const productRoute = require("./products");
+const productRoute = require("./Products");
 
 //rota bilgilerini url yolu olarak tanımlıyoruz
 
