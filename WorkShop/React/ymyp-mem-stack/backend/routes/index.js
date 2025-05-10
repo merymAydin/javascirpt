@@ -10,7 +10,7 @@ const productRoute = require("./products");
 //localhost:5000/api/categories
 router.use("/categories",categoryRoute);
 //localhost:5000/api/products
-router.use("/products",productRoute);
-
+router.use("/Products",productRoute);
+//localhost:5000/api/authors
 
 module.exports = router;
