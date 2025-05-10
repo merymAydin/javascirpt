@@ -62,7 +62,7 @@ router.get("/:productid",async(req,res) => {
 router.put("/", async (req, res) => {
   try {
     const updateProductInfo = req.body;
-    const product = await Product.findById(updateProductInfo);
+    const product = await Product.findById(updateProductInfo._id);
     if (!product) {
       res.status(404).json({ error: "Product not found..." });
     }
