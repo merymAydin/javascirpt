@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
       req.body;
     const newProduct = new Product({
       name,
-      images,
+      image,
       price,
       description,
       colors,
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
 /************************************************************************/
 
 //get Product endpoint start
-router.get("/:productid", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const productid = req.params.productid;
     const product = await product.findById(productid);
@@ -43,6 +43,20 @@ router.get("/:productid", async (req, res) => {
 //get product endpoint end
 
 /************************************************************************/
+router.get("/:productid",async(req,res) => {
+    try {
+        const productid = req.params.productid;
+        const product = await Category.findById(productid);
+        res.status(200).json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Server error..." })
+    }
+})
+
+
+//get categories by ID endpoint end
+/************************************************************************/
 //update product endpoint start
 
 router.put("/", async (req, res) => {
@@ -50,7 +64,7 @@ router.put("/", async (req, res) => {
     const updateProductInfo = req.body;
     const product = await Product.findById(updateProductInfo);
     if (!product) {
-      res.status(404).json({ error: "Category not found..." });
+      res.status(404).json({ error: "Product not found..." });
     }
     const updatedProduct = await Product.findByIdAndUpdate(
       product._id,
