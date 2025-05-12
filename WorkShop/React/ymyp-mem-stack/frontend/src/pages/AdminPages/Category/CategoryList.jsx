@@ -1,6 +1,6 @@
-import React,{ useState } from 'react'
-import { useEffect } from 'react';
-import { Table } from 'antd'
+import React,{ useEffect,useState } from 'react'
+import { Space, Table } from 'antd'
+import { Button } from 'antd/es/radio';
 
 
 const CategoryList = () => {
@@ -41,7 +41,7 @@ const CategoryList = () => {
             key : "name",
             width : "50%",
             render : (text) => (<strong>{text}</strong>)
-        },
+        }
     ]
   return (
     <div>
