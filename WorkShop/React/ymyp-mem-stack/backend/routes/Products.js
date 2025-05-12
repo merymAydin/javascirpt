@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
       req.body;
     const newProduct = new Product({
       name,
-      image,
+      images,
       price,
       description,
       colors,
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const productid = req.params.productid;
-    const product = await product.findById(productid);
+    const product = await product.findById();
     res.staturs(201).json(ProductList);
   } catch (error) {
     console.log(error);
