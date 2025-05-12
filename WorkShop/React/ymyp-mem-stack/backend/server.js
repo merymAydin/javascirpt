@@ -2,9 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const cors=require("cors");
-const path = require("path");
 
-app.use(express.json());  // Add this middleware to parse JSON request bodies
+// Add this middleware to parse JSON request bodies
 
 const mainRoute = require("./routes");
 
@@ -22,10 +21,10 @@ const connect = async() => {
 }
 
 // Serve static files from the public directory
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
+app.use(express.json());
 app.use("/api",mainRoute);
 app.use(cors());
+
 app.get("/",(req,res) => {
     res.send("localhost => server get metodu");
 })

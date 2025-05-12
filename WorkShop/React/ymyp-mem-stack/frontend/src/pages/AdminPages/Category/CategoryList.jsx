@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import React,{ useState } from 'react'
+import { useEffect } from 'react';
 import { Table } from 'antd'
-import { useNavigate } from 'react-router-dom';
+
 
 const CategoryList = () => {
     const [categoryData,setCategoryData] = useState([]);
@@ -40,7 +41,7 @@ const CategoryList = () => {
             key : "name",
             width : "50%",
             render : (text) => (<strong>{text}</strong>)
-        }
+        },
     ]
   return (
     <div>
