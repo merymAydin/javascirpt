@@ -5,12 +5,7 @@ import {
   ShopOutlined,
   UserOutlined,
   DashboardOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
+  FormOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,17 +18,21 @@ const AdminLayout = ({children}) => {
     const items = [
         { key: '1', icon: <DashboardOutlined />, label: 'Dashboard', onClick : () => navigate("/admin")},
         { key: '2', icon: <AppstoreOutlined />, label: 'Kategori', children : [
-            {key : "2-1", label: "Kategorileri listele"},
-            {key : "2-2", label: "Kategorileri ekle"}
+            {key : "2-1", label: "Kategorileri listele", onClick : () => navigate("/admin/categories")},
+            {key : "2-2", label: "Kategorileri ekle", onClick : () => navigate("/admin/categories/create")}
         ] },
         { key: '3', icon: <ShopOutlined />, label: 'Ürün', children : [
-            {key : "3-1", label: "ürünleri listele"},
+            {key : "3-1", label: "ürünleri listele" , onClick: () => navigate("/admin/products") },
             {key : "3-2", label: "ürün ekle"}
         ]},
         { key: '4', icon: <UserOutlined />, label: 'Kullanıcı' ,children :[
           {key : "4-1", label: "Kullanıcıları listele"},
           {key : "4-2" , label: "kullanıcı ekle"}
         ] },
+        {key : "5",icon:<FormOutlined/>, label:"yazar",children:[
+          {key : "4-1", label: "yazarları listele",onclick:()=> navigate("/admin/authors")},
+          {key : "4-2" , label: "yazar ekle",onclick:()=> navigate("/admin/authors/create")}
+        ]}
     ]
 
   return (
@@ -51,7 +50,7 @@ const AdminLayout = ({children}) => {
         </Sider>
         <Layout>
           <Header style={{ color: "#fff" }}>YMYP MERN STACK APP</Header>
-          <Content>{children}</Content>
+          <Content style={{height:"80vh"}}>{children}</Content>
           <Footer style={{ backgroundColor: "#001529", color: "#fff" }}>
             Tüm hakları saklıdır
           </Footer>

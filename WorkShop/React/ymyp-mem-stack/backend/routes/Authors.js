@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Author = require('../models/Author');
+const Author = require("../models/Author");
 
 //create author endpoint start
 router.post("/",async(req,res)=> {
@@ -33,7 +33,7 @@ router.get("/",async(req,res)=> {
 router.get("/:authorid",async(req,res) => {
     try {
         const authorid = req.params.authorid;
-        const author = await author.findById(authorid);
+        const author = await Author.findById(authorid);
         res.status(200).json(author)
     } catch (error) {
         console.log(error);
@@ -48,7 +48,7 @@ router.put("/",async(req,res)=> {
         const updateAuthorInfo = req.body;
         const author = await Author.findById(updateAuthorInfo._id);
         if(!author){
-            return res.status(404).json({ error: "Category not found..." });
+            return res.status(404).json({ error: "Author not found..." });
         }
         const updatedAuthor = await Author.findByIdAndUpdate(author._id,updateAuthorInfo);
         res.status(200).json(updatedAuthor);
@@ -65,7 +65,7 @@ router.delete("/",async(req,res) => {
         const deleteAuthorInfo = req.body;
         const deletedauthor = await Author.findByIdAndDelete(deleteAuthorInfo._id);
         if (!deletedauthor) {
-            return res.status(404).json({ error: "Category not found..." });
+            return res.status(404).json({ error: "Author not found..." });
         }
         res.status(200).json({Message : "deleted succesfully"});
     } catch (error) {

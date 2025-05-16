@@ -1,6 +1,4 @@
-const mongoose = required("mongoose");
-
-
+const mongoose = require("mongoose");
 
 //Alanlar firstname ve lastname olacak
 const authorSchema = new mongoose.Schema(
