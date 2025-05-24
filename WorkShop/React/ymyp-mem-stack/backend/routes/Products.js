@@ -2,96 +2,75 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 
-
-//Create Product endpoint start
-router.post("/", async (req, res) => {
-  try {
-    const { name, images, price, description, colors, stock, category } =
-      req.body;
-    const newProduct = new Product({
-      name,
-      images,
-      price,
-      description,
-      colors,
-      stock,
-      category,
-    });
-    await newProduct.save();
-    res.status(201).json(newProduct);
-  } catch (error) {
-    console.log(error);
-    res.send(500).json({ error: "Server error..." });
-  }
-});
-
-//create product endpoint end
-/************************************************************************/
-
-//get Product endpoint start
-router.get("/", async (req, res) => {
-  try {
-    const productid = req.params.productid;
-    const product = await product.findById();
-    res.staturs(201).json(ProductList);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Server error..." });
-  }
-});
-
-//get product endpoint end
-
-/************************************************************************/
-router.get("/:productid",async(req,res) => {
+//CREATE PRODUCT
+router.post("/", async(req,res) => {
     try {
-        const productid = req.params.productid;
-        const product = await Category.findById(productid);
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+        res.status(201).json(newProduct);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error : "Sunucu hatası : "})
+    }
+});
+
+//GET PRODUCTS
+router.get("/",async(req,res) => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error : "Sunucu hatası : "})
+    }
+})
+//GET BY ID PRODUCT
+router.get("/:productid", async (req,res) => {
+    try {
+        const productId = req.params.productid;
+        const product = await Product.findById(productId);
+        if(!product){
+            return res.status(404).json({error : "Ürün bulunamadı..."});
+        }
         res.status(200).json(product);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "Server error..." })
+        res.status(500).json({error : "Sunucu hatası : "})
     }
 })
 
-
-//get categories by ID endpoint end
-/************************************************************************/
-//update product endpoint start
-
-router.put("/", async (req, res) => {
-  try {
-    const updateProductInfo = req.body;
-    const product = await Product.findById(updateProductInfo._id);
-    if (!product) {
-      res.status(404).json({ error: "Product not found..." });
-    }
-    const updatedProduct = await Product.findByIdAndUpdate(
-      product._id,
-      updateProductInfo);
-      res.status(200).json(updatedProduct);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Server error..." });
-  }
-});
-//update product endpoint end
-
-/************************************************************************/
-//delete product endpoint start
-router.delete("/",async(req,res) => {
+//UPDATE PRODUCT
+router.put("/:productid", async(req,res) => {
     try {
-        const deletedProductInfo = req.body;
-        const deletedProduct = await Product.findByIdAndDelete(deletedProductInfo._id);
-        if (!deletedProduct) {
-            return res.status(404).json({error : "category not found"});
+        const productId = req.params.productid;
+        const updateInfo = req.body;
+
+        const updated = await Product.findByIdAndUpdate(productId, updateInfo, { new: true });
+        if(!updated){
+            return res.status(404).json({error : "Ürün bulunamadı..."});
         }
-        res.status(200).json({Message : "deleted succesfully"});
+        console.log("Updated product:", updated);
+        res.status(200).json(updated);
+
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "Server error..." });
+        res.status(500).json({error : "Sunucu hatası : "})
     }
 })
 
+//DELETE PRODUCT
+router.delete("/:productid", async(req,res) => {
+    try {
+        const productId = req.params.productid;
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+        if(!deletedProduct){
+            return res.status(404).json({error : "Ürün bulunamadı..."});
+        }
+        res.status(200).json(deletedProduct);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error : "Sunucu hatası : "})
+    }
+})
 
 module.exports = router;

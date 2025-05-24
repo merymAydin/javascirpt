@@ -23,10 +23,10 @@ const AdminLayout = ({children}) => {
         ] },
         { key: '3', icon: <ShopOutlined />, label: 'Ürün', children : [
             {key : "3-1", label: "ürünleri listele" , onClick: () => navigate("/admin/products") },
-            {key : "3-2", label: "ürün ekle"}
+            {key : "3-2", label: "ürün ekle", onClick: () => navigate("/admin/products/create")}
         ]},
         { key: '4', icon: <UserOutlined />, label: 'Kullanıcı' ,children :[
-          {key : "4-1", label: "Kullanıcıları listele"},
+          {key : "4-1", label: "Kullanıcıları listele" },
           {key : "4-2" , label: "kullanıcı ekle"}
         ] },
         {key : "5",icon:<FormOutlined/>, label:"yazar",children:[
