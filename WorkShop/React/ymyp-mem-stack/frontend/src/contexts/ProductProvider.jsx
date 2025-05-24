@@ -56,6 +56,8 @@ const ProductProvider = ({children}) => {
                         category:data.category,
                         _id: id 
                     });
+                }else{
+                    console.log("ürün getirilemedi...");
                 }
             }
         } catch (error) {
@@ -70,8 +72,8 @@ const ProductProvider = ({children}) => {
     const values = {
         products,
         getProducts,
-        deleteProducts
-        
+        deleteProducts,
+        getByIdProduct
     }
 
   return (
