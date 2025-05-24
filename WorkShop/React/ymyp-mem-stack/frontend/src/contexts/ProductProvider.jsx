@@ -24,7 +24,7 @@ const ProductProvider = ({children}) => {
 
     const deleteProducts = async(productid) => {
         try {
-            const response = await fetch("http://localhost:5000/api/categories",{
+            const response = await fetch("http://localhost:5000/api/products",{
                 method : "DELETE",
                 headers : {
                     "content-type" : "application/json"
@@ -41,7 +41,27 @@ const ProductProvider = ({children}) => {
         }
     }
 
-    
+    const getByIdProduct = async(id,frm) => {
+        try {
+            const response  = await fetch(`http://localhost:5000/api/products/${id}`);
+            if(response.ok){
+                const data = await response.json();
+                if(data){
+                    frm.setFieldsValue({
+                        name : data.name,
+                        image:data.image,
+                        description : data.description,
+                        colors : data.colors,
+                        stock : data.stock,
+                        category:data.category,
+                        _id: id 
+                    });
+                }
+            }
+        } catch (error) {
+            console.log("Sunucu hatası : ",error);
+        }
+    }
 
     useEffect(() => {
         getProducts();
